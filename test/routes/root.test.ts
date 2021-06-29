@@ -1,18 +1,16 @@
-import { server } from '../utils/serverTestHelper';
+import setupApp from '../utils/serverTestHelper';
 
 describe('Routes - root', () => {
-  afterAll(() => {
-    server.close();
-  });
+  const app = setupApp();
 
   test('responds with success on request /', async () => {
-    const response = await server.inject({
+    const response = await app.inject({
       method: 'GET',
       url: '/'
     });
 
     expect(response.statusCode).toBe(200);
-    expect(JSON.parse(response.payload)).toStrictEqual({root: true});
+    expect(JSON.parse(response.payload)).toStrictEqual({ root: true });
     expect(response.payload).toBe('{"root":true}');
   });
 });

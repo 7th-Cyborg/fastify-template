@@ -1,5 +1,15 @@
 import Fastify, { FastifyInstance } from 'fastify';
 import app from '../../src/app';
 
-export const server: FastifyInstance = Fastify({ logger: false });
-server.register(app);
+export default function setupServer(config = { logger: false }): FastifyInstance {
+  const server: FastifyInstance = Fastify(config);
+  server.register(app);
+
+  beforeAll(async () => {
+    await server.ready();
+  });
+
+  afterAll(() => server.close());
+
+  return server;
+}
