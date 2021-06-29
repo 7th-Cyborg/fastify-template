@@ -1,9 +1,22 @@
-import { FastifyPluginAsync } from 'fastify';
+import { FastifyInstance } from 'fastify';
+import { rootGet } from '../controllers/root';
 
-const root: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
-  fastify.get('/', async function (request, reply) {
-    reply.send({ root: true });
-  });
+const rootGetOpts = {
+  schema: {
+    tags:['Server Status'],
+    description: 'Check server status',
+    response: {
+      200: {
+        type: 'object',
+        properties: {
+          status: { type: 'string' },
+        }
+      },
+    },
+  },
+  handler: rootGet,
 };
 
-export default root;
+export default async function root(fastify: FastifyInstance): Promise<void> {
+  fastify.get('/', rootGetOpts);
+}

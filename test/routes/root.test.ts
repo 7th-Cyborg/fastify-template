@@ -10,7 +10,7 @@ describe('Routes - root', () => {
     });
 
     expect(response.statusCode).toBe(200);
-    expect(JSON.parse(response.payload)).toStrictEqual({ root: true });
-    expect(response.payload).toBe('{"root":true}');
+    expect(JSON.parse(response.payload)).toStrictEqual({ status : 'OK' });
+    expect(response.payload).toBe('{"status":"OK"}');
   });
 });
