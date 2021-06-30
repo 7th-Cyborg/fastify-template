@@ -5,3 +5,7 @@
 /dist
 /out
 /coverage
+
+
+#Setup
+.env
