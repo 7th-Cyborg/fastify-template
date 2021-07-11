@@ -1,5 +1,5 @@
 import Fastify, { FastifyInstance } from 'fastify';
-import app from '../../src/app';
+import app from '../app';
 
 export default function setupServer(config = { logger: false }): FastifyInstance {
   const server: FastifyInstance = Fastify(config);

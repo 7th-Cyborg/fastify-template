@@ -1,5 +1,5 @@
 import { FastifyInstance } from 'fastify';
-import { rootGet } from '../controllers/root';
+import { rootGet } from './root.controllers';
 
 const rootGetOpts = {
   schema: {

@@ -16,7 +16,8 @@ export default async function App(fastify: FastifyInstance, opts: AppOptions): P
 
   // Routes
   void fastify.register(AutoLoad, {
-    dir: join(__dirname, 'routes'),
+    dir: join(__dirname, 'components'),
+    indexPattern: /.*routes(\.ts|\.js)$/, // Match only ts and js file that have 'routes' string included in name of the file (e.g. 'root.routes.ts')
     options: opts
   });
 }
